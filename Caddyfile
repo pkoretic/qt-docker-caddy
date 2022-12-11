@@ -1,0 +1,9 @@
+# The Caddyfile is an easy way to configure your Caddy web server. 
+# https://caddyserver.com/docs/caddyfile
+{
+	debug
+}
+
+localhost:8181 {
+	reverse_proxy qtdockercaddy:8282
+}

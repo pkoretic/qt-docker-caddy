@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  qtdockercaddy:
+    image: qtdockercaddy
+    restart: unless-stopped
+
+  caddy: # https://hub.docker.com/_/caddy
+    image: caddy:latest
+    restart: unless-stopped
+    ports:
+      - "8181:8181"
+      - "8181:8181/udp"
+    volumes:
+      - $PWD/Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  caddy_data:
+    external: true
+  caddy_config:
