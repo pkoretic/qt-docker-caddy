@@ -9,10 +9,10 @@ services:
     image: caddy:latest
     restart: unless-stopped
     ports:
-      - "8181:8181"
-      - "8181:8181/udp"
+      - "${HTTPS_PORT:-8181}:8181"
+      - "${HTTPS_PORT:-8181}:8181/udp"
     volumes:
-      - $PWD/Caddyfile:/etc/caddy/Caddyfile
+      - ./Caddyfile:/etc/caddy/Caddyfile
       - caddy_data:/data
       - caddy_config:/config
 
